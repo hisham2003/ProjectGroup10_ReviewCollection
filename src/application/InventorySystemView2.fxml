@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="266.0" prefWidth="263.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddSystemController">
+   <children>
+      <AnchorPane layoutX="-100.0" layoutY="-174.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="38.0" prefHeight="76.0" prefWidth="175.0" text="Add Inventory">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="AddButton" layoutX="106.0" layoutY="159.0" mnemonicParsing="false" onAction="#addInvenotry" text="Add" />
+   </children>
+</AnchorPane>

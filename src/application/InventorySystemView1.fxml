@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="338.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventorySystemController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="341.0">
+               <children>
+                  <Label prefHeight="103.0" prefWidth="341.0" text="Inventory System" textAlignment="RIGHT">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="addInventory" mnemonicParsing="false" onAction="#swicthToAdd" text="Add inventory" textAlignment="CENTER" />
+            <Button fx:id="removeInventory" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#swicthToRemove" prefHeight="15.0" prefWidth="102.0" text="Remove inventory" textAlignment="CENTER" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
