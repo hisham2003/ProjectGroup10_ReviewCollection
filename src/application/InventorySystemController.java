@@ -23,6 +23,7 @@ public class InventorySystemController {
 
     @FXML
     void swicthToAdd(ActionEvent event) throws IOException {
+    	//from youtube video https://www.youtube.com/watch?v=hcM-R-YOKkQ
     	Parent root = FXMLLoader.load(getClass().getResource("InventorySystemView2.fxml"));
     	stage =(Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);

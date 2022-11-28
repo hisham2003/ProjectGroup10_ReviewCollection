@@ -14,6 +14,8 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="AddButton" layoutX="106.0" layoutY="159.0" mnemonicParsing="false" onAction="#addInvenotry" text="Add" />
+      <Button fx:id="AddButton" layoutX="38.0" layoutY="172.0" mnemonicParsing="false" onAction="#addItem" text="Add" />
+      <Text fx:id="testOutput" layoutX="18.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="215.13671875" />
+      <TextField fx:id="testField" layoutX="38.0" layoutY="64.0" />
    </children>
 </AnchorPane>
