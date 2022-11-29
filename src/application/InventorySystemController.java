@@ -71,13 +71,14 @@ public class InventorySystemController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		idColumn.setCellValueFactory(new PropertyValueFactory<>("Id"));
-		nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-		costColumn.setCellValueFactory(new PropertyValueFactory<>("Cost"));
-		saleColumn.setCellValueFactory(new PropertyValueFactory<>("SalePrice"));
-		amountColumn.setCellValueFactory(new PropertyValueFactory<>("Amount"));
-		totalCostColumn.setCellValueFactory(new PropertyValueFactory<>("TotalCost"));
-		totalSalePriceColumn.setCellValueFactory(new PropertyValueFactory<>("TotalSalePrice"));
+		//used https://stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
+		idColumn.setCellValueFactory(data -> data.getValue().idProperty().asObject());
+		nameColumn.setCellValueFactory(data -> data.getValue().nameProperty());
+		costColumn.setCellValueFactory(data -> data.getValue().costProperty().asObject());
+		saleColumn.setCellValueFactory(data -> data.getValue().salePriceProperty().asObject());
+		amountColumn.setCellValueFactory(data -> data.getValue().amountProperty().asObject());
+		totalCostColumn.setCellValueFactory(data -> data.getValue().totalCostProperty().asObject());
+		totalSalePriceColumn.setCellValueFactory(data -> data.getValue().totalSalePriceProperty().asObject());
 		
 		table.setItems(list);
 	}
