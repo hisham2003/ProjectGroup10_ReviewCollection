@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="338.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventorySystemController">
+<VBox prefHeight="627.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventorySystemController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -21,11 +21,19 @@
             </HBox>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="addInventory" mnemonicParsing="false" onAction="#swicthToAdd" text="Add inventory" textAlignment="CENTER" />
-            <Button fx:id="removeInventory" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#swicthToRemove" prefHeight="15.0" prefWidth="102.0" text="Remove inventory" textAlignment="CENTER" />
-         </children>
-      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <Button fx:id="removeInventory" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#swicthToRemove" prefHeight="15.0" prefWidth="102.0" text="Remove inventory" textAlignment="CENTER" />
+      <Button fx:id="addInventory" mnemonicParsing="false" onAction="#swicthToAdd" text="Add inventory" textAlignment="CENTER" />
+      <TableView fx:id="table" prefHeight="244.0" prefWidth="547.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="costColumn" prefWidth="75.0" text="Cost" />
+            <TableColumn fx:id="saleColumn" prefWidth="75.0" text="Sale Price" />
+            <TableColumn fx:id="amountColumn" prefWidth="75.0" text="Amount" />
+            <TableColumn fx:id="totalCostColumn" prefWidth="75.0" text="Total Cost" />
+            <TableColumn fx:id="totalSalePriceColumn" prefWidth="104.0" text="Total Sale Price" />
+        </columns>
+      </TableView>
    </children>
 </VBox>

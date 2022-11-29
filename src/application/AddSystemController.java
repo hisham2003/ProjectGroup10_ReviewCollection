@@ -20,9 +20,10 @@ public class AddSystemController {
 
     @FXML
     void addItem(ActionEvent event) {
-    	String id=testField.getText();
+    	String id=testField.getId();
     	testOutput.setText(id);
     }
+ 
 
    
 

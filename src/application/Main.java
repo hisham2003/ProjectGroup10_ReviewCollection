@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
 
@@ -17,10 +18,11 @@ public class Main extends Application {
 			
 			FXMLLoader loader= new FXMLLoader();
 			Parent root = FXMLLoader.load(getClass().getResource("InventorySystemView1.fxml"));
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,800,400);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Inventory System");
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
