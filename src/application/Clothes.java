@@ -33,7 +33,7 @@ public class Clothes extends Item {
 	}
 
 	public final StringProperty materialProperty() {
-		return size;
+		return material;
 
 	}
 
