@@ -60,6 +60,7 @@ public class InventorySystemController implements Initializable {
 	
     @FXML
     private ChoiceBox<String> typeChoiceBox;
+    private String[] types = { "Clothes", "item" };
 	@FXML
 	void swicthToAdd(ActionEvent event) throws IOException {
 		// from youtube video https://www.youtube.com/watch?v=hcM-R-YOKkQ
@@ -81,6 +82,7 @@ public class InventorySystemController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		//stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
 		//remember to javadoc everything
+		typeChoiceBox.getItems().addAll(types);
 		idColumn.setCellValueFactory(data -> data.getValue().idProperty().asObject());
 		nameColumn.setCellValueFactory(data -> data.getValue().nameProperty());
 		costColumn.setCellValueFactory(data -> data.getValue().costProperty().asObject());
@@ -100,6 +102,7 @@ public class InventorySystemController implements Initializable {
 			
 
 	);
+	
 	
 
 }
