@@ -14,12 +14,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-// used this video for this tablevie stuff https://www.youtube.com/watch?v=vAmyTJyFXe4
-public class InventorySystemController implements Initializable{
+
+public class InventorySystemController implements Initializable {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -33,35 +34,42 @@ public class InventorySystemController implements Initializable{
 	private TableView<Item> table;
 
 	@FXML
-	private TableColumn<Item,Integer> costColumn;
+	private TableColumn<Item, Integer> costColumn;
 
 	@FXML
-	private TableColumn<Item,String> nameColumn;
+	private TableColumn<Item, String> nameColumn;
 
 	@FXML
-	private TableColumn<Item,Integer> totalCostColumn;
+	private TableColumn<Item, Integer> totalCostColumn;
 
 	@FXML
-	private TableColumn<Item,Integer> amountColumn;
+	private TableColumn<Item, Integer> amountColumn;
 
 	@FXML
-	private TableColumn<Item,Integer> totalSalePriceColumn;
+	private TableColumn<Item, Integer> totalSalePriceColumn;
 
 	@FXML
-	private TableColumn<Item,Integer> saleColumn;
+	private TableColumn<Item, Integer> saleColumn;
 
 	@FXML
-	private TableColumn<Item,Integer> idColumn;
+	private TableColumn<Item, Integer> idColumn;
+	@FXML
+	private TableColumn<Clothes, String> materialColumn;
+	@FXML
+	private TableColumn<Clothes, String> sizeColumn;
 	
-	
+    @FXML
+    private ChoiceBox<String> typeChoiceBox;
 	@FXML
 	void swicthToAdd(ActionEvent event) throws IOException {
 		// from youtube video https://www.youtube.com/watch?v=hcM-R-YOKkQ
+		
 		Parent root = FXMLLoader.load(getClass().getResource("InventorySystemView2.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+		
 	}
 
 	@FXML
@@ -71,7 +79,8 @@ public class InventorySystemController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//used https://stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
+		//stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
+		//remember to javadoc everything
 		idColumn.setCellValueFactory(data -> data.getValue().idProperty().asObject());
 		nameColumn.setCellValueFactory(data -> data.getValue().nameProperty());
 		costColumn.setCellValueFactory(data -> data.getValue().costProperty().asObject());
@@ -79,14 +88,18 @@ public class InventorySystemController implements Initializable{
 		amountColumn.setCellValueFactory(data -> data.getValue().amountProperty().asObject());
 		totalCostColumn.setCellValueFactory(data -> data.getValue().totalCostProperty().asObject());
 		totalSalePriceColumn.setCellValueFactory(data -> data.getValue().totalSalePriceProperty().asObject());
-		
+		materialColumn.setCellValueFactory(data -> data.getValue().materialProperty());
+		sizeColumn.setCellValueFactory(data -> data.getValue().sizeProperty());
+
 		table.setItems(list);
 	}
-	ObservableList<Item> list=FXCollections.observableArrayList(
-			new Item(1,"his",3,4,5,6,2)
-			);
+
+	ObservableList<Item> list = FXCollections.observableArrayList(
 		
-	
+			new Clothes(1, "his", 3, 4, 5, 6, 2, "h", "2")
+			
+
+	);
 	
 
 }

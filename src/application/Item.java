@@ -15,7 +15,6 @@ public class Item {
 	private SimpleIntegerProperty totalSalePrice;
 
 	public Item(int id, String name, int cost, int salePrice, int amount, int totalCost, int totalSalePrice) {
-		super();
 		this.id = new SimpleIntegerProperty(id);
 		this.name = new SimpleStringProperty(name);
 		this.cost = new SimpleIntegerProperty(cost);
@@ -28,7 +27,7 @@ public class Item {
 	public int getId() {
 		return id.get();
 	}
-
+// used code from  https://stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
 	public final IntegerProperty idProperty() {
 		return id;
 
