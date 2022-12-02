@@ -90,7 +90,7 @@ public class InventorySystemController implements Initializable {
 		totalSalePriceColumn.setCellValueFactory(data -> data.getValue().totalSalePriceProperty().asObject());
 		materialColumn.setCellValueFactory(data -> data.getValue().materialProperty());
 		sizeColumn.setCellValueFactory(data -> data.getValue().sizeProperty());
-		
+		//
 		table.setItems(list);
 	}
 
