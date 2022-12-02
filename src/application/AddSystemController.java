@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class AddSystemController implements Initializable {
+public class AddSystemController extends InventorySystemController implements Initializable  {
 	
 	private Stage stage;
 	private Scene scene;
@@ -41,6 +41,10 @@ public class AddSystemController implements Initializable {
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+		Clothes cloth = new Clothes(1,"his",2,3,4,5,6,"h","g");
+		
+		
+		
 	}
 
 	private String[] types = { "Clothes", "item" };
@@ -56,4 +60,5 @@ public class AddSystemController implements Initializable {
 		String test = typeChoiceBox.getValue();
 		testOutput.setText(test);
 	}
+	
 }

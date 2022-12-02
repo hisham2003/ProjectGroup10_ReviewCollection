@@ -22,7 +22,6 @@
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" />
-      <ChoiceBox fx:id="typeChoiceBox" prefWidth="150.0" />
       <Button fx:id="removeInventory" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#swicthToRemove" prefHeight="15.0" prefWidth="102.0" text="Remove inventory" textAlignment="CENTER" />
       <Button fx:id="addInventory" mnemonicParsing="false" onAction="#swicthToAdd" text="Add inventory" textAlignment="CENTER" />
       <TableView fx:id="table" prefHeight="244.0" prefWidth="547.0">
