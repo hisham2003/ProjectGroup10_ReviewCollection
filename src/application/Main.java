@@ -17,7 +17,7 @@ public class Main extends Application {
 		try {
 			
 			FXMLLoader loader= new FXMLLoader();
-			Parent root = FXMLLoader.load(getClass().getResource("InventorySystemView1.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 			Scene scene = new Scene(root,800,400);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Inventory System");
