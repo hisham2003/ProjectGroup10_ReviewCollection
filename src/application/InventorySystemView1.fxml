@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="627.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventorySystemController">
+<VBox prefHeight="481.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ClothesInventorySystemController">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="341.0">
                <children>
-                  <Label prefHeight="103.0" prefWidth="341.0" text="Inventory System" textAlignment="RIGHT">
+                  <Label prefHeight="103.0" prefWidth="341.0" text="Clothes Inventory" textAlignment="RIGHT">
                      <font>
                         <Font size="32.0" />
                      </font>
@@ -21,8 +21,40 @@
             </HBox>
          </children>
       </HBox>
-      <Button fx:id="removeInventory" alignment="TOP_CENTER" mnemonicParsing="false" onAction="#swicthToRemove" prefHeight="15.0" prefWidth="102.0" text="Remove inventory" textAlignment="CENTER" />
-      <Button fx:id="addInventory" mnemonicParsing="false" onAction="#swicthToAdd" text="Add inventory" textAlignment="CENTER" />
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="addInventory" mnemonicParsing="false" onAction="#swicthToAdd" text="Add inventory" textAlignment="CENTER" />
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="ID" />
+                  <Label text="Name" />
+                  <Label text="Cost" />
+                  <Label text="SalePrice" />
+               </children></VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="idField" />
+                  <TextField fx:id="nameField" />
+                  <TextField fx:id="costField" />
+                  <TextField fx:id="saleField" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="amount" />
+                  <Label text="Size" />
+                  <Label text="Material" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="amountField" />
+                  <TextField fx:id="sizeField" />
+                  <TextField fx:id="materialField" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
       <TableView fx:id="table" prefHeight="244.0" prefWidth="547.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />

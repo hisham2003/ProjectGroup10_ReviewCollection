@@ -18,15 +18,37 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class InventorySystemController implements Initializable {
+public class ClothesInventorySystemController implements Initializable {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
 	@FXML
-	private Button removeInventory;
+	private TextField idField;
+
+	@FXML
+	private TextField saleField;
+
+	@FXML
+	private Button AddButton;
+
+	@FXML
+	private TextField nameField;
+
+	@FXML
+	private TextField costField;
+
+	@FXML
+	private TextField amountField;
+
+	@FXML
+	private TextField sizeField;
+
+	@FXML
+	private TextField materialField;
 
 	@FXML
 	private Button addInventory;
@@ -58,20 +80,21 @@ public class InventorySystemController implements Initializable {
 	private TableColumn<Clothes, String> materialColumn;
 	@FXML
 	private TableColumn<Clothes, String> sizeColumn;
-    @FXML
-    private Label testLabel;
-	
+	@FXML
+	private Label testLabel;
 
 	@FXML
 	void swicthToAdd(ActionEvent event) throws IOException {
-		// from youtube video https://www.youtube.com/watch?v=hcM-R-YOKkQ
-		
-		Parent root = FXMLLoader.load(getClass().getResource("InventorySystemView2.fxml"));
-		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-		
+		int idFieldnum = Integer.parseInt(idField.getText());
+		int costFieldnum = Integer.parseInt(costField.getText());
+		int saleFieldnum = Integer.parseInt(saleField.getText());
+		int amountFieldnum = Integer.parseInt(amountField.getText());
+		int totalCostFieldnum = amountFieldnum * costFieldnum;
+		int totalSaleAmountFieldnum = amountFieldnum * saleFieldnum;
+		Clothes input = new Clothes(idFieldnum, nameField.getText(), costFieldnum, saleFieldnum, amountFieldnum,
+				totalCostFieldnum, totalSaleAmountFieldnum, sizeField.getText(), materialField.getText());
+		table.getItems().add(input);
+
 	}
 
 	@FXML
@@ -81,9 +104,9 @@ public class InventorySystemController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
-		//remember to javadoc everything
-		
+		// stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
+		// remember to javadoc everything
+
 		idColumn.setCellValueFactory(data -> data.getValue().idProperty().asObject());
 		nameColumn.setCellValueFactory(data -> data.getValue().nameProperty());
 		costColumn.setCellValueFactory(data -> data.getValue().costProperty().asObject());
@@ -94,20 +117,11 @@ public class InventorySystemController implements Initializable {
 		materialColumn.setCellValueFactory(data -> data.getValue().materialProperty());
 		sizeColumn.setCellValueFactory(data -> data.getValue().sizeProperty());
 		//
-		table.setItems(list);
+
 	}
 
-	ObservableList<Item> list = FXCollections.observableArrayList(
-		
-			new Clothes(1, "his", 3, 4, 5, 6, 2, "h", "2")
-			
+	
 
-	);
-	public void displayTest(Clothes text) {
-		
-	table.getItems().add(text);	
-	}
-	
-	
+
 
 }
