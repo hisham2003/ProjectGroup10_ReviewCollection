@@ -98,17 +98,19 @@ public class ClothesInventorySystemController implements Initializable {
 
 	@FXML
 	public void swicthToAdd(ActionEvent event) throws IOException {
+		
+		
 		int idFieldnum = Integer.parseInt(idField.getText());
 		int costFieldnum = Integer.parseInt(costField.getText());
 		int saleFieldnum = Integer.parseInt(saleField.getText());
 		int amountFieldnum = Integer.parseInt(amountField.getText());
 		int totalCostFieldnum = amountFieldnum * costFieldnum;
 		int totalSaleAmountFieldnum = amountFieldnum * saleFieldnum;
-
+		
 		Clothes input = new Clothes(idFieldnum, nameField.getText(), costFieldnum, saleFieldnum, amountFieldnum,
 				totalCostFieldnum, totalSaleAmountFieldnum, sizeField.getText(), materialField.getText());
 		table.getItems().add(input);
-
+		
 		int totalCost = 0;
 		int totalSale = 0;
 		int totalAmount=0;
@@ -126,6 +128,8 @@ public class ClothesInventorySystemController implements Initializable {
 		totalSaleLabel.setText(Integer.toString(totalSale));
 		totalAmountLabel.setText(Integer.toString(totalAmount));
 		totalHoldLabel.setText(totalHold);
+		
+		
 	}
 
 	// https://stackoverflow.com/questions/34857007/how-to-delete-row-from-table-column-javafx
@@ -150,6 +154,8 @@ public class ClothesInventorySystemController implements Initializable {
 		totalSaleLabel.setText(Integer.toString(totalSale));
 		totalAmountLabel.setText(Integer.toString(totalAmount));
 		totalHoldLabel.setText(totalHold);
+		
+		
 	}
 
 	@Override

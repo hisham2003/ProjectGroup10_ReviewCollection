@@ -14,9 +14,6 @@ public class Clothes extends Item {
 		this.size = new SimpleStringProperty(size);
 		this.material = new SimpleStringProperty(material);
 	}
-	
-	
-	
 
 	public String getSize() {
 		return size.get();

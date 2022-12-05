@@ -23,6 +23,7 @@ public class Item {
 		this.totalCost = new SimpleIntegerProperty(totalCost);
 		this.totalSalePrice = new SimpleIntegerProperty(totalSalePrice);
 	}
+
 //could not put this in clothes since it would not wor find out why
 	public double getHoldingCostClothes() {
 		return 0.15 * getAmount();
@@ -119,5 +120,7 @@ public class Item {
 	public void setTotalSalePrice(int totalSalePrice) {
 		this.totalSalePrice.set(totalSalePrice);
 	}
+
+	
 
 }
