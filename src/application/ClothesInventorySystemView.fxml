@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -8,29 +9,34 @@
 
 <VBox prefHeight="481.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ClothesInventorySystemController">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <VBox prefHeight="80.0" prefWidth="718.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="341.0">
-               <children>
-                  <Label prefHeight="103.0" prefWidth="341.0" text="Clothes Inventory" textAlignment="RIGHT">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
+            <Label prefHeight="82.0" prefWidth="498.0" text="Clothes Inventory" textAlignment="RIGHT">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
          </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      </VBox>
+      <HBox prefHeight="100.0" prefWidth="531.0">
          <children>
-            <Button fx:id="addInventory" mnemonicParsing="false" onAction="#swicthToAdd" text="Add inventory" textAlignment="CENTER" />
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="100.0" prefWidth="64.0">
                <children>
-                  <Label text="ID" />
-                  <Label text="Name" />
-                  <Label text="Cost" />
-                  <Label text="SalePrice" />
-               </children></VBox>
+                  <Label prefHeight="17.0" prefWidth="110.0" text=" ID" />
+                  <Label text=" Name">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin></Label>
+                  <Label text=" Cost">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin></Label>
+                  <Label text=" SalePrice">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin></Label>
+               </children>
+            </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <TextField fx:id="idField" />
@@ -39,11 +45,17 @@
                   <TextField fx:id="saleField" />
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="100.0" prefWidth="67.0">
                <children>
-                  <Label text="amount" />
-                  <Label text="Size" />
-                  <Label text="Material" />
+                  <Label text=" Amount" />
+                  <Label text=" Size">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin></Label>
+                  <Label text=" Material">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin></Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -53,9 +65,51 @@
                   <TextField fx:id="materialField" />
                </children>
             </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="addInventory" mnemonicParsing="false" onAction="#swicthToAdd" prefHeight="25.0" prefWidth="102.0" text="Add" textAlignment="CENTER" />
+                  <Button fx:id="removeInventory" mnemonicParsing="false" onAction="#removeInventory" prefHeight="25.0" prefWidth="119.0" text="Remove" />
+                  <Label prefHeight="50.0" prefWidth="106.0" text="Holding cost is $0.15 for each piece of clothing" wrapText="true">
+                     <font>
+                        <Font size="10.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox fillWidth="false" prefHeight="115.0" prefWidth="170.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="169.0" text="Total Cost                            $">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="221.0" text="Total Sale Revenue              $">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="221.0" text="Total Amount">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="30.0" prefWidth="221.0" text="Total Holding cost               $">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox fillWidth="false" prefHeight="100.0" prefWidth="132.0">
+               <children>
+                  <Label fx:id="totalCostLabel" />
+                  <Label fx:id="totalSaleLabel" prefHeight="30.0" prefWidth="221.0" />
+                  <Label fx:id="totalAmountLabel" prefHeight="30.0" prefWidth="221.0" />
+                  <Label fx:id="totalHoldLabel" prefHeight="30.0" prefWidth="221.0" />
+               </children>
+            </VBox>
          </children>
       </HBox>
-      <TableView fx:id="table" prefHeight="244.0" prefWidth="547.0">
+      <TableView fx:id="table" prefHeight="301.0" prefWidth="718.0">
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
@@ -64,8 +118,8 @@
             <TableColumn fx:id="amountColumn" prefWidth="75.0" text="Amount" />
             <TableColumn fx:id="totalCostColumn" prefWidth="75.0" text="Total Cost" />
             <TableColumn fx:id="totalSalePriceColumn" prefWidth="104.0" text="Total Sale Price" />
-            <TableColumn fx:id="sizeColumn" prefWidth="75.0" text="size" />
-            <TableColumn fx:id="materialColumn" prefWidth="75.0" text="m" />
+            <TableColumn fx:id="sizeColumn" prefWidth="75.0" text="Size" />
+            <TableColumn fx:id="materialColumn" prefWidth="88.0" text="Material" />
         </columns>
       </TableView>
    </children>

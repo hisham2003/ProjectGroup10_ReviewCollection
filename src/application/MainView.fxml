@@ -5,14 +5,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.MainViewController">
+<AnchorPane prefHeight="372.0" prefWidth="456.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainViewController">
    <children>
-      <HBox layoutY="-7.0" prefHeight="370.0" prefWidth="486.0">
+      <HBox layoutX="47.0" layoutY="53.0" prefHeight="224.0" prefWidth="333.0">
          <children>
-            <Button fx:id="clothesButton" mnemonicParsing="false" onAction="#switchToClothes" text="Clothes" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
+            <HBox prefHeight="216.0" prefWidth="301.0">
+               <children>
+                  <Button fx:id="clothesButton" mnemonicParsing="false" onAction="#switchToClothes" text="Clothes" />
+                  <Button mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" text="Button" />
+               </children>
+            </HBox>
          </children>
       </HBox>
    </children>
