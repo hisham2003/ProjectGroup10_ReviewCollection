@@ -23,10 +23,15 @@ public class Item {
 		this.totalCost = new SimpleIntegerProperty(totalCost);
 		this.totalSalePrice = new SimpleIntegerProperty(totalSalePrice);
 	}
+//could not put this in clothes since it would not wor find out why
+	public double getHoldingCostClothes() {
+		return 0.15 * getAmount();
+	}
 
 	public int getId() {
 		return id.get();
 	}
+
 // used code from  https://stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
 	public final IntegerProperty idProperty() {
 		return id;
@@ -36,11 +41,11 @@ public class Item {
 	public void setId(int id) {
 		this.id.set(id);
 	}
-	
 
 	public String getName() {
 		return name.get();
 	}
+
 	public final StringProperty nameProperty() {
 		return name;
 
@@ -49,11 +54,11 @@ public class Item {
 	public void setName(String name) {
 		this.name.set(name);
 	}
-	
 
 	public int getCost() {
 		return cost.get();
 	}
+
 	public final IntegerProperty costProperty() {
 		return cost;
 
@@ -66,6 +71,7 @@ public class Item {
 	public int getSalePrice() {
 		return salePrice.get();
 	}
+
 	public final IntegerProperty salePriceProperty() {
 		return salePrice;
 
@@ -78,6 +84,7 @@ public class Item {
 	public int getAmount() {
 		return amount.get();
 	}
+
 	public final IntegerProperty amountProperty() {
 		return amount;
 
@@ -90,6 +97,7 @@ public class Item {
 	public int getTotalCost() {
 		return totalCost.get();
 	}
+
 	public final IntegerProperty totalCostProperty() {
 		return totalCost;
 
@@ -102,10 +110,12 @@ public class Item {
 	public int getTotalSalePrice() {
 		return totalSalePrice.get();
 	}
+
 	public final IntegerProperty totalSalePriceProperty() {
 		return totalSalePrice;
 
 	}
+
 	public void setTotalSalePrice(int totalSalePrice) {
 		this.totalSalePrice.set(totalSalePrice);
 	}

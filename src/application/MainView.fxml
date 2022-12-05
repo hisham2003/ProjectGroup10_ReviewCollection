@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="372.0" prefWidth="456.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainViewController">
+   <children>
+      <HBox layoutX="47.0" layoutY="53.0" prefHeight="224.0" prefWidth="333.0">
+         <children>
+            <HBox prefHeight="216.0" prefWidth="301.0">
+               <children>
+                  <Button fx:id="clothesButton" mnemonicParsing="false" onAction="#switchToClothes" text="Clothes" />
+                  <Button mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" text="Button" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
