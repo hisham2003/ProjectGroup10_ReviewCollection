@@ -61,22 +61,22 @@ public class ClothesInventorySystemController implements Initializable {
 	private TableView<Item> table;
 
 	@FXML
-	private TableColumn<Item, Integer> costColumn;
+	private TableColumn<Item, Double> costColumn;
 
 	@FXML
 	private TableColumn<Item, String> nameColumn;
 
 	@FXML
-	private TableColumn<Item, Integer> totalCostColumn;
+	private TableColumn<Item, Double> totalCostColumn;
 
 	@FXML
 	private TableColumn<Item, Integer> amountColumn;
 
 	@FXML
-	private TableColumn<Item, Integer> totalSalePriceColumn;
+	private TableColumn<Item, Double> totalSalePriceColumn;
 
 	@FXML
-	private TableColumn<Item, Integer> saleColumn;
+	private TableColumn<Item, Double> saleColumn;
 
 	@FXML
 	private TableColumn<Item, Integer> idColumn;
@@ -91,71 +91,95 @@ public class ClothesInventorySystemController implements Initializable {
 	private Label totalHoldLabel;
 	@FXML
 	private Label totalCostLabel;
+	@FXML
+	private Label totalAmountLabel;
+	@FXML
+	private Label errorLabel;
     @FXML
-    private Label totalAmountLabel;
+    private Button escapeButton;
 
 	private static final DecimalFormat df = new DecimalFormat("0.00");
 
+	int idFieldnum;
+	double costFieldnum;
+	int saleFieldnum;
+	int amountFieldnum;
+	double totalCostFieldnum;
+	int totalSaleAmountFieldnum;
+
 	@FXML
 	public void swicthToAdd(ActionEvent event) throws IOException {
+
+		try {
+			idFieldnum = Integer.parseInt(idField.getText());
+			costFieldnum = Double.parseDouble(costField.getText());
+			saleFieldnum = Integer.parseInt(saleField.getText());
+			amountFieldnum = Integer.parseInt(amountField.getText());
+			totalCostFieldnum = amountFieldnum * costFieldnum;
+			totalSaleAmountFieldnum = amountFieldnum * saleFieldnum;
+			Clothes input = new Clothes(idFieldnum, nameField.getText(), costFieldnum, saleFieldnum, amountFieldnum,
+					totalCostFieldnum, totalSaleAmountFieldnum, sizeField.getText(), materialField.getText());
+			table.getItems().add(input);
+		} catch (NumberFormatException e) {
+			errorLabel.setText("Only use numerical values for id,cost,sale,amount");
+		}
 		
-		
-		int idFieldnum = Integer.parseInt(idField.getText());
-		int costFieldnum = Integer.parseInt(costField.getText());
-		int saleFieldnum = Integer.parseInt(saleField.getText());
-		int amountFieldnum = Integer.parseInt(amountField.getText());
-		int totalCostFieldnum = amountFieldnum * costFieldnum;
-		int totalSaleAmountFieldnum = amountFieldnum * saleFieldnum;
-		
-		Clothes input = new Clothes(idFieldnum, nameField.getText(), costFieldnum, saleFieldnum, amountFieldnum,
-				totalCostFieldnum, totalSaleAmountFieldnum, sizeField.getText(), materialField.getText());
-		table.getItems().add(input);
-		
-		int totalCost = 0;
-		int totalSale = 0;
-		int totalAmount=0;
-		double hold = 0;
+		double totalCost = 0;
+		double totalSale = 0;
+		int totalAmount = 0;
+		double totalHold = 0;
 
 		for (Item item : table.getItems()) {
 			totalCost = totalCost + item.getTotalCost();
 			totalSale = totalSale + item.getTotalSalePrice();
-			totalAmount=totalAmount+ item.getAmount();
-			hold = hold + item.getHoldingCostClothes();
+			totalAmount = totalAmount + item.getAmount();
+			totalHold = totalHold + item.getHoldingCostClothes();
 		}
 
-		String totalHold = df.format(hold);
-		totalCostLabel.setText(Integer.toString(totalCost));
-		totalSaleLabel.setText(Integer.toString(totalSale));
+		String formattedCost = df.format(totalCost);
+		String formattedSale = df.format(totalHold);
+		String formattedHold = df.format(totalHold);
+		
+		totalCostLabel.setText(formattedCost);
+		totalSaleLabel.setText(formattedSale);
 		totalAmountLabel.setText(Integer.toString(totalAmount));
-		totalHoldLabel.setText(totalHold);
-		
-		
+		totalHoldLabel.setText(formattedHold);
+
 	}
 
 	// https://stackoverflow.com/questions/34857007/how-to-delete-row-from-table-column-javafx
 	public void removeInventory(ActionEvent event) throws IOException {
 		Item selection = table.getSelectionModel().getSelectedItem();
 		table.getItems().remove(selection);
-		
-		int totalCost = 0;
-		int totalSale = 0;
-		int totalAmount=0;
-		double hold = 0;
+
+		double totalCost = 0;
+		double totalSale = 0;
+		int totalAmount = 0;
+		double totalHold = 0;
 
 		for (Item item : table.getItems()) {
 			totalCost = totalCost + item.getTotalCost();
 			totalSale = totalSale + item.getTotalSalePrice();
-			totalAmount=totalAmount+ item.getAmount();
-			hold = hold + item.getHoldingCostClothes();
+			totalAmount = totalAmount + item.getAmount();
+			totalHold = totalHold + item.getHoldingCostClothes();
 		}
 
-		String totalHold = df.format(hold);
-		totalCostLabel.setText(Integer.toString(totalCost));
-		totalSaleLabel.setText(Integer.toString(totalSale));
+		String formattedCost = df.format(totalCost);
+		String formattedSale = df.format(totalHold);
+		String formattedHold = df.format(totalHold);
+		
+		totalCostLabel.setText(formattedCost);
+		totalSaleLabel.setText(formattedSale);
 		totalAmountLabel.setText(Integer.toString(totalAmount));
-		totalHoldLabel.setText(totalHold);
-		
-		
+		totalHoldLabel.setText(formattedHold);
+
+	}
+	public void returnToMenu(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("ClothesInventorySystemView.fxml"));
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
 	}
 
 	@Override

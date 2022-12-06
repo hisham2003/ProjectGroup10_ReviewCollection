@@ -1,6 +1,8 @@
 package application;
 
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -8,20 +10,20 @@ import javafx.beans.property.StringProperty;
 public class Item {
 	private SimpleIntegerProperty id;
 	private SimpleStringProperty name;
-	private SimpleIntegerProperty cost;
-	private SimpleIntegerProperty salePrice;
+	private SimpleDoubleProperty cost;
+	private SimpleDoubleProperty salePrice;
 	private SimpleIntegerProperty amount;
-	private SimpleIntegerProperty totalCost;
-	private SimpleIntegerProperty totalSalePrice;
+	private SimpleDoubleProperty totalCost;
+	private SimpleDoubleProperty totalSalePrice;
 
-	public Item(int id, String name, int cost, int salePrice, int amount, int totalCost, int totalSalePrice) {
+	public Item(int id, String name, double cost, double salePrice, int amount, double totalCost, double totalSalePrice) {
 		this.id = new SimpleIntegerProperty(id);
 		this.name = new SimpleStringProperty(name);
-		this.cost = new SimpleIntegerProperty(cost);
-		this.salePrice = new SimpleIntegerProperty(salePrice);
+		this.cost = new SimpleDoubleProperty(cost);
+		this.salePrice = new SimpleDoubleProperty(salePrice);
 		this.amount = new SimpleIntegerProperty(amount);
-		this.totalCost = new SimpleIntegerProperty(totalCost);
-		this.totalSalePrice = new SimpleIntegerProperty(totalSalePrice);
+		this.totalCost = new SimpleDoubleProperty(totalCost);
+		this.totalSalePrice = new SimpleDoubleProperty(totalSalePrice);
 	}
 
 //could not put this in clothes since it would not wor find out why
@@ -56,11 +58,11 @@ public class Item {
 		this.name.set(name);
 	}
 
-	public int getCost() {
+	public double getCost() {
 		return cost.get();
 	}
 
-	public final IntegerProperty costProperty() {
+	public final DoubleProperty costProperty() {
 		return cost;
 
 	}
@@ -69,11 +71,11 @@ public class Item {
 		this.cost.set(cost);
 	}
 
-	public int getSalePrice() {
+	public double getSalePrice() {
 		return salePrice.get();
 	}
 
-	public final IntegerProperty salePriceProperty() {
+	public final DoubleProperty salePriceProperty() {
 		return salePrice;
 
 	}
@@ -95,11 +97,11 @@ public class Item {
 		this.amount.set(amount);
 	}
 
-	public int getTotalCost() {
+	public double getTotalCost() {
 		return totalCost.get();
 	}
 
-	public final IntegerProperty totalCostProperty() {
+	public final DoubleProperty totalCostProperty() {
 		return totalCost;
 
 	}
@@ -108,11 +110,11 @@ public class Item {
 		this.totalCost.set(totalCost);
 	}
 
-	public int getTotalSalePrice() {
+	public double getTotalSalePrice() {
 		return totalSalePrice.get();
 	}
 
-	public final IntegerProperty totalSalePriceProperty() {
+	public final DoubleProperty totalSalePriceProperty() {
 		return totalSalePrice;
 
 	}

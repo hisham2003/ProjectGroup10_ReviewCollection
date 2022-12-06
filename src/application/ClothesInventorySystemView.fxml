@@ -11,30 +11,50 @@
    <children>
       <VBox prefHeight="80.0" prefWidth="718.0">
          <children>
-            <Label prefHeight="82.0" prefWidth="498.0" text="Clothes Inventory" textAlignment="RIGHT">
+            <Button fx:id="escapeButton" mnemonicParsing="false" onAction="#returnToMenu" text="Escape" />
+            <Label alignment="TOP_CENTER" prefHeight="50.0" prefWidth="729.0" text="Clothes Inventory" textAlignment="CENTER">
                <font>
                   <Font size="32.0" />
                </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </Label>
+            <Label fx:id="errorLabel" alignment="TOP_CENTER" prefHeight="21.0" prefWidth="718.0" textAlignment="CENTER" textFill="RED" underline="true">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Label>
          </children>
       </VBox>
       <HBox prefHeight="100.0" prefWidth="531.0">
          <children>
             <VBox prefHeight="100.0" prefWidth="64.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="110.0" text=" ID" />
+                  <Label prefHeight="17.0" prefWidth="110.0" text=" ID">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
                   <Label text=" Name">
                      <VBox.margin>
                         <Insets top="8.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
                   <Label text=" Cost">
                      <VBox.margin>
                         <Insets top="8.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
                   <Label text=" SalePrice">
                      <VBox.margin>
                         <Insets top="8.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -47,15 +67,24 @@
             </VBox>
             <VBox prefHeight="100.0" prefWidth="67.0">
                <children>
-                  <Label text=" Amount" />
+                  <Label text=" Amount">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
                   <Label text=" Size">
                      <VBox.margin>
                         <Insets top="8.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
                   <Label text=" Material">
                      <VBox.margin>
                         <Insets top="8.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font></Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -71,31 +100,43 @@
                   <Button fx:id="removeInventory" mnemonicParsing="false" onAction="#removeInventory" prefHeight="25.0" prefWidth="119.0" text="Remove" />
                   <Label prefHeight="50.0" prefWidth="106.0" text="Holding cost is $0.15 for each piece of clothing" wrapText="true">
                      <font>
-                        <Font size="10.0" />
+                        <Font size="11.0" />
                      </font></Label>
                </children>
             </VBox>
             <VBox fillWidth="false" prefHeight="115.0" prefWidth="170.0">
                <children>
-                  <Label prefHeight="17.0" prefWidth="169.0" text="Total Cost                            $">
+                  <Label prefHeight="17.0" prefWidth="169.0" text="Total Cost of items          $">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="221.0" text="Total Sale Revenue              $">
+                  <Label prefHeight="30.0" prefWidth="221.0" text="Total Sale Revenue          $">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
                   </Label>
                   <Label prefHeight="30.0" prefWidth="221.0" text="Total Amount">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
                   </Label>
-                  <Label prefHeight="30.0" prefWidth="221.0" text="Total Holding cost               $">
+                  <Label prefHeight="30.0" prefWidth="221.0" text="Total Holding cost           $">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
                   </Label>
                </children>
             </VBox>
