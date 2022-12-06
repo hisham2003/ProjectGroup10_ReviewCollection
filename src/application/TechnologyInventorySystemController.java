@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class ClothesInventorySystemController implements Initializable {
+public class TechnologyInventorySystemController implements Initializable {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
@@ -49,7 +49,9 @@ public class ClothesInventorySystemController implements Initializable {
 	private TextField sizeField;
 
 	@FXML
-	private TextField materialField;
+	private TextField typeField;
+	@FXML
+	private TextField yearField;
 
 	@FXML
 	private Button addInventory;
@@ -81,9 +83,11 @@ public class ClothesInventorySystemController implements Initializable {
 	@FXML
 	private TableColumn<Item, Integer> idColumn;
 	@FXML
-	private TableColumn<Clothes, String> materialColumn;
+	private TableColumn<Technology, String> typeColumn;
 	@FXML
-	private TableColumn<Clothes, String> sizeColumn;
+	private TableColumn<Technology, String> sizeColumn;
+	@FXML
+	private TableColumn<Technology, Integer> yearColumn;
 
 	@FXML
 	private Label totalSaleLabel;
@@ -100,25 +104,27 @@ public class ClothesInventorySystemController implements Initializable {
 
 	private static final DecimalFormat df = new DecimalFormat("0.00");
 
-	int idFieldnum;
-	double costFieldnum;
-	int saleFieldnum;
-	int amountFieldnum;
-	double totalCostFieldnum;
-	int totalSaleAmountFieldnum;
+	int idFieldNum;
+	double costFieldNum;
+	int saleFieldNum;
+	int amountFieldNum;
+	double totalCostFieldNum;
+	int totalSaleAmountFieldNum;
+	int yearFieldNum;
 
 	@FXML
 	public void swicthToAdd(ActionEvent event) throws IOException {
 
 		try {
-			idFieldnum = Integer.parseInt(idField.getText());
-			costFieldnum = Double.parseDouble(costField.getText());
-			saleFieldnum = Integer.parseInt(saleField.getText());
-			amountFieldnum = Integer.parseInt(amountField.getText());
-			totalCostFieldnum = amountFieldnum * costFieldnum;
-			totalSaleAmountFieldnum = amountFieldnum * saleFieldnum;
-			Clothes input = new Clothes(idFieldnum, nameField.getText(), costFieldnum, saleFieldnum, amountFieldnum,
-					totalCostFieldnum, totalSaleAmountFieldnum, sizeField.getText(), materialField.getText());
+			idFieldNum = Integer.parseInt(idField.getText());
+			costFieldNum = Double.parseDouble(costField.getText());
+			saleFieldNum = Integer.parseInt(saleField.getText());
+			amountFieldNum = Integer.parseInt(amountField.getText());
+			totalCostFieldNum = amountFieldNum * costFieldNum;
+			totalSaleAmountFieldNum = amountFieldNum * saleFieldNum;
+			yearFieldNum=Integer.parseInt(yearField.getText());
+			Technology input = new Technology(idFieldNum, nameField.getText(), costFieldNum, saleFieldNum, amountFieldNum,
+					totalCostFieldNum, totalSaleAmountFieldNum, sizeField.getText(), typeField.getText(),yearFieldNum);
 			table.getItems().add(input);
 		} catch (NumberFormatException e) {
 			errorLabel.setText("Only use numerical values for id,cost,sale,amount");
@@ -133,7 +139,7 @@ public class ClothesInventorySystemController implements Initializable {
 			totalCost = totalCost + item.getTotalCost();
 			totalSale = totalSale + item.getTotalSalePrice();
 			totalAmount = totalAmount + item.getAmount();
-			totalHold = totalHold + item.getHoldingCostClothes();
+			totalHold = totalHold + item.getHoldingCostTech();
 		}
 		
 		String formattedCost = df.format(totalCost);
@@ -161,7 +167,7 @@ public class ClothesInventorySystemController implements Initializable {
 			totalCost = totalCost + item.getTotalCost();
 			totalSale = totalSale + item.getTotalSalePrice();
 			totalAmount = totalAmount + item.getAmount();
-			totalHold = totalHold + item.getHoldingCostClothes();
+			totalHold = totalHold + item.getHoldingCostTech();
 		}
 
 		String formattedCost = df.format(totalCost);
@@ -195,8 +201,9 @@ public class ClothesInventorySystemController implements Initializable {
 		amountColumn.setCellValueFactory(data -> data.getValue().amountProperty().asObject());
 		totalCostColumn.setCellValueFactory(data -> data.getValue().totalCostProperty().asObject());
 		totalSalePriceColumn.setCellValueFactory(data -> data.getValue().totalSalePriceProperty().asObject());
-		materialColumn.setCellValueFactory(data -> data.getValue().materialProperty());
-		sizeColumn.setCellValueFactory(data -> data.getValue().sizeProperty());
+		typeColumn.setCellValueFactory(data -> data.getValue().typeProperty());
+		sizeColumn.setCellValueFactory(data -> data.getValue().sizeTechProperty());
+		yearColumn.setCellValueFactory(data -> data.getValue().yearProperty().asObject());
 
 	}
 

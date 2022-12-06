@@ -12,8 +12,7 @@
             <HBox prefHeight="216.0" prefWidth="301.0">
                <children>
                   <Button fx:id="clothesButton" mnemonicParsing="false" onAction="#switchToClothes" text="Clothes" />
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Button mnemonicParsing="false" text="Button" />
+                  <Button fx:id="techButton" mnemonicParsing="false" onAction="#switchToTech" text="Tech" />
                </children>
             </HBox>
          </children>

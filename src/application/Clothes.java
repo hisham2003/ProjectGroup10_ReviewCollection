@@ -9,13 +9,15 @@ public class Clothes extends Item {
 	private SimpleStringProperty size;
 	private SimpleStringProperty material;
 
+
 	public Clothes(int id, String name, double cost, double salePrice, int amount, double totalCost, double totalSalePrice,
 			String size, String material) {
 		super(id, name, cost, salePrice, amount, totalCost, totalSalePrice);
 		this.size = new SimpleStringProperty(size);
 		this.material = new SimpleStringProperty(material);
+
 	}
-	//https://stackoverflow.com/questions/35569061/java-error-checking-for-text-field
+	
 	
 
 	public String getSize() {
@@ -40,9 +42,7 @@ public class Clothes extends Item {
 
 	}
 
-	public void setMaterial(String material) {
-		this.material.set(material);
-	}
+	
 	
 	
 

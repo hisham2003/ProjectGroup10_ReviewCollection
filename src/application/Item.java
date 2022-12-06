@@ -30,6 +30,9 @@ public class Item {
 	public double getHoldingCostClothes() {
 		return 0.15 * getAmount();
 	}
+	public double getHoldingCostTech() {
+		return 0.20 * getAmount();
+	}
 
 	public int getId() {
 		return id.get();

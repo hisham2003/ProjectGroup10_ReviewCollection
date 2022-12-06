@@ -14,18 +14,26 @@ import javafx.scene.Node;
 public class MainViewController {
 	private Stage stage;
 	private Scene scene;
-	private Parent root;
-	private Stage primaryStage;
-	private Scene myScene;
-	private ClothesInventorySystemController nextController;
+
     @FXML
     private Button clothesButton;
+    @FXML
+    private Button techButton;
+
 
     @FXML
     void switchToClothes(ActionEvent event) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("ClothesInventorySystemView.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+    }
+    @FXML
+    void switchToTech(ActionEvent event) throws IOException {
+    	Parent root2 = FXMLLoader.load(getClass().getResource("TechnologyInventoryView.fxml"));
+		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		scene = new Scene(root2);
 		stage.setScene(scene);
 		stage.show();
     }

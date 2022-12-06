@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="481.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ClothesInventorySystemController">
+<VBox prefHeight="481.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TechnologyInventorySystemController">
    <children>
       <VBox prefHeight="80.0" prefWidth="718.0">
          <children>
             <Button fx:id="escapeButton" mnemonicParsing="false" onAction="#returnToMenu" text="Escape" />
-            <Label alignment="TOP_CENTER" prefHeight="50.0" prefWidth="729.0" text="Clothes Inventory" textAlignment="CENTER">
+            <Label alignment="TOP_CENTER" prefHeight="50.0" prefWidth="729.0" text="Tech Inventory" textAlignment="CENTER">
                <font>
                   <Font size="32.0" />
                </font>
@@ -78,27 +78,36 @@
                      <font>
                         <Font size="13.0" />
                      </font></Label>
-                  <Label text=" Material">
+                  <Label text=" Type">
                      <VBox.margin>
                         <Insets top="8.0" />
                      </VBox.margin>
                      <font>
                         <Font size="13.0" />
                      </font></Label>
+                  <Label text=" Year">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <TextField fx:id="amountField" />
                   <TextField fx:id="sizeField" />
-                  <TextField fx:id="materialField" />
+                  <TextField fx:id="typeField" />
+                  <TextField fx:id="yearField" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Button fx:id="addInventory" mnemonicParsing="false" onAction="#swicthToAdd" prefHeight="25.0" prefWidth="102.0" text="Add" textAlignment="CENTER" />
                   <Button fx:id="removeInventory" mnemonicParsing="false" onAction="#removeInventory" prefHeight="25.0" prefWidth="119.0" text="Remove" />
-                  <Label prefHeight="50.0" prefWidth="106.0" text="Holding cost is 15%" wrapText="true">
+                  <Label prefHeight="50.0" prefWidth="106.0" text="Holding cost is 20% " wrapText="true">
                      <font>
                         <Font size="11.0" />
                      </font></Label>
@@ -159,8 +168,9 @@
             <TableColumn fx:id="amountColumn" prefWidth="75.0" text="Amount" />
             <TableColumn fx:id="totalCostColumn" prefWidth="75.0" text="Total Cost" />
             <TableColumn fx:id="totalSalePriceColumn" prefWidth="104.0" text="Total Sale Price" />
-            <TableColumn fx:id="sizeColumn" prefWidth="75.0" text="Size" />
-            <TableColumn fx:id="materialColumn" prefWidth="88.0" text="Material" />
+            <TableColumn fx:id="sizeColumn" prefWidth="38.0" text="Size" />
+            <TableColumn fx:id="typeColumn" prefWidth="63.0" text="Type" />
+            <TableColumn fx:id="yearColumn" prefWidth="75.0" text="Year" />
         </columns>
       </TableView>
    </children>
