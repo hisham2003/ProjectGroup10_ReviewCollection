@@ -15,6 +15,9 @@ public class MainViewController {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private Stage primaryStage;
+	private Scene myScene;
+	private ClothesInventorySystemController nextController;
     @FXML
     private Button clothesButton;
 
@@ -26,5 +29,8 @@ public class MainViewController {
 		stage.setScene(scene);
 		stage.show();
     }
+
+
+    
 
 }

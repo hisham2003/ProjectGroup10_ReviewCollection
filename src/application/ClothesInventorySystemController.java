@@ -95,8 +95,8 @@ public class ClothesInventorySystemController implements Initializable {
 	private Label totalAmountLabel;
 	@FXML
 	private Label errorLabel;
-    @FXML
-    private Button escapeButton;
+	@FXML
+	private Button escapeButton;
 
 	private static final DecimalFormat df = new DecimalFormat("0.00");
 
@@ -123,7 +123,7 @@ public class ClothesInventorySystemController implements Initializable {
 		} catch (NumberFormatException e) {
 			errorLabel.setText("Only use numerical values for id,cost,sale,amount");
 		}
-		
+
 		double totalCost = 0;
 		double totalSale = 0;
 		int totalAmount = 0;
@@ -139,7 +139,7 @@ public class ClothesInventorySystemController implements Initializable {
 		String formattedCost = df.format(totalCost);
 		String formattedSale = df.format(totalHold);
 		String formattedHold = df.format(totalHold);
-		
+
 		totalCostLabel.setText(formattedCost);
 		totalSaleLabel.setText(formattedSale);
 		totalAmountLabel.setText(Integer.toString(totalAmount));
@@ -167,19 +167,16 @@ public class ClothesInventorySystemController implements Initializable {
 		String formattedCost = df.format(totalCost);
 		String formattedSale = df.format(totalHold);
 		String formattedHold = df.format(totalHold);
-		
+
 		totalCostLabel.setText(formattedCost);
 		totalSaleLabel.setText(formattedSale);
 		totalAmountLabel.setText(Integer.toString(totalAmount));
 		totalHoldLabel.setText(formattedHold);
 
 	}
+
 	public void returnToMenu(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("ClothesInventorySystemView.fxml"));
-		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+
 	}
 
 	@Override
