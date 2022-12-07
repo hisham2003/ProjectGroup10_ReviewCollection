@@ -18,10 +18,10 @@ public class Main extends Application {
 			
 			FXMLLoader loader= new FXMLLoader();
 			Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
-			Scene scene = new Scene(root,800,400);
+			Scene scene = new Scene(root,350,400);
 		
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Inventory System");
+			primaryStage.setTitle("Inventory Management System");
 			primaryStage.show();
 			
 		} catch(Exception e) {

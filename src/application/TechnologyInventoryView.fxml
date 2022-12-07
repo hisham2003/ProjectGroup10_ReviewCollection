@@ -12,7 +12,7 @@
       <VBox prefHeight="80.0" prefWidth="718.0">
          <children>
             <Button fx:id="escapeButton" mnemonicParsing="false" onAction="#returnToMenu" text="Escape" />
-            <Label alignment="TOP_CENTER" prefHeight="50.0" prefWidth="729.0" text="Tech Inventory" textAlignment="CENTER">
+            <Label alignment="TOP_CENTER" prefHeight="50.0" prefWidth="729.0" text="Technology Inventory" textAlignment="CENTER">
                <font>
                   <Font size="32.0" />
                </font>

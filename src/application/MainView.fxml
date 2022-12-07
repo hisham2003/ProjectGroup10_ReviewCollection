@@ -1,18 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="372.0" prefWidth="456.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainViewController">
+<AnchorPane prefHeight="325.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainViewController">
    <children>
-      <HBox layoutX="47.0" layoutY="53.0" prefHeight="224.0" prefWidth="333.0">
+      <HBox layoutX="-2.0" prefHeight="400.0" prefWidth="345.0">
          <children>
-            <HBox prefHeight="216.0" prefWidth="301.0">
+            <HBox prefHeight="400.0" prefWidth="351.0">
                <children>
-                  <Button fx:id="clothesButton" mnemonicParsing="false" onAction="#switchToClothes" text="Clothes" />
-                  <Button fx:id="techButton" mnemonicParsing="false" onAction="#switchToTech" text="Tech" />
+                  <VBox prefHeight="352.0" prefWidth="345.0">
+                     <children>
+                        <VBox prefHeight="136.0" prefWidth="345.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="444.0">
+                                 <children>
+                                    <Label prefHeight="100.0" prefWidth="324.0" text="Inventory Management System" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="8.0" right="8.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox prefHeight="194.0" prefWidth="254.0">
+                           <children>
+                              <Button fx:id="techButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#switchToTech" prefHeight="146.0" prefWidth="127.0">
+                                 <graphic>
+                                    <VBox prefHeight="103.0" prefWidth="111.0">
+                                       <children>
+                                          <ImageView fx:id="imageView1" fitHeight="96.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/ComputerImage.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label alignment="BOTTOM_CENTER" prefHeight="59.0" prefWidth="111.0" text="Technology" />
+                                       </children>
+                                    </VBox>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets bottom="15.0" left="15.0" right="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="clothesButton" mnemonicParsing="false" onAction="#switchToClothes">
+                                 <graphic>
+                                    <VBox prefHeight="109.0" prefWidth="111.0">
+                                       <children>
+                                          <ImageView fx:id="imageView" fitHeight="122.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/ClothesImage.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="102.0" text="Clothes" textAlignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="43.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>
