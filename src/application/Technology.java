@@ -58,15 +58,6 @@ public class Technology extends Item {
 
 	}
 
-	/**
-	 * Sets the size of this object. used this.variable.set(variable) due to the
-	 * nature of simpleTypePropertys
-	 * 
-	 * @param size
-	 */
-	public void setSize(String size) {
-		this.size.set(size);
-	}
 
 	/**
 	 * @return the type of this object

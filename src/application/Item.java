@@ -18,6 +18,7 @@ import javafx.beans.property.StringProperty;
  */
 
 public class Item {
+	//SimpleVariblaesProperties are used for the table to be utilized properly
 	private SimpleIntegerProperty id;
 	private SimpleStringProperty name;
 	private SimpleDoubleProperty cost;

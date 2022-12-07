@@ -33,7 +33,6 @@ import javafx.stage.Stage;
 public class ClothesInventorySystemController implements Initializable {
 	private Stage stage;
 	private Scene scene;
-	private Parent root;
 	private int idFieldNum;
 	private double costFieldNum;
 	private double saleFieldNum;
