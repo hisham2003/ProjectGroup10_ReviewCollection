@@ -23,10 +23,27 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ * The controller for the Technology inventory System that handles most of the
+ * Initializations of the properties of the scene and handles errors as well
+ * 
+ * @author HishamSO
+ *
+ */
 public class TechnologyInventorySystemController implements Initializable {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private int idFieldNum;
+	private double costFieldNum;
+	private double saleFieldNum;
+	private int amountFieldNum;
+	private double totalCostFieldNum;
+	private int totalSaleAmountFieldNum;
+	private int yearFieldNum;
+	private String sizeFieldNum;
+	private static final DecimalFormat df = new DecimalFormat("0.00");
+
 	@FXML
 	private TextField idField;
 
@@ -50,8 +67,10 @@ public class TechnologyInventorySystemController implements Initializable {
 
 	@FXML
 	private ChoiceBox<String> typeField;
+
 	@FXML
 	private ChoiceBox<String> sizeBox;
+
 	@FXML
 	private TextField yearField;
 
@@ -104,33 +123,30 @@ public class TechnologyInventorySystemController implements Initializable {
 	@FXML
 	private Button escapeButton;
 
-	private static final DecimalFormat df = new DecimalFormat("0.00");
-	
-	int idFieldNum;
-	double costFieldNum;
-	double saleFieldNum;
-	int amountFieldNum;
-	double totalCostFieldNum;
-	int totalSaleAmountFieldNum;
-	int yearFieldNum;
-	String sizeFieldNum;
-
+	/**
+	 * Handles the "Add" button event and adds a new item to the table. has a
+	 * numberFormatException to prevent letters or characters
+	 * 
+	 * @param event the event that triggered this method call
+	 * @throws IOException if an error occurs while switching to the add scene
+	 */
 	@FXML
 	public void swicthToAdd(ActionEvent event) throws IOException {
 
 		try {
-			
+
 			idFieldNum = Integer.parseInt(idField.getText());
 			costFieldNum = Double.parseDouble(costField.getText());
 			saleFieldNum = Double.parseDouble(saleField.getText());
 			amountFieldNum = Integer.parseInt(amountField.getText());
 			totalCostFieldNum = amountFieldNum * costFieldNum;
 			totalSaleAmountFieldNum = (int) (amountFieldNum * saleFieldNum);
-			yearFieldNum=Integer.parseInt(yearField.getText());
-			sizeFieldNum=sizeField.getText() + " " +sizeBox.getSelectionModel().getSelectedItem();
-			
-			Technology input = new Technology(idFieldNum, nameField.getText(), costFieldNum, saleFieldNum, amountFieldNum,
-					totalCostFieldNum, totalSaleAmountFieldNum, sizeFieldNum, typeField.getSelectionModel().getSelectedItem(),yearFieldNum);
+			yearFieldNum = Integer.parseInt(yearField.getText());
+			sizeFieldNum = sizeField.getText() + " " + sizeBox.getSelectionModel().getSelectedItem();
+
+			Technology input = new Technology(idFieldNum, nameField.getText(), costFieldNum, saleFieldNum,
+					amountFieldNum, totalCostFieldNum, totalSaleAmountFieldNum, sizeFieldNum,
+					typeField.getSelectionModel().getSelectedItem(), yearFieldNum);
 			table.getItems().add(input);
 		} catch (NumberFormatException e) {
 			errorLabel.setText("Only use numerical values for id,cost,sale,amount");
@@ -147,7 +163,7 @@ public class TechnologyInventorySystemController implements Initializable {
 			totalAmount = totalAmount + item.getAmount();
 			totalHold = totalHold + item.getHoldingCostTech();
 		}
-		
+
 		String formattedCost = df.format(totalCost);
 		String formattedSale = df.format(totalSale);
 		String formattedHold = df.format(totalHold);
@@ -159,7 +175,12 @@ public class TechnologyInventorySystemController implements Initializable {
 
 	}
 
-	// https://stackoverflow.com/questions/34857007/how-to-delete-row-from-table-column-javafx
+	/**
+	 * Handles the "Remove" button event and removes an item from the table.
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	public void removeInventory(ActionEvent event) throws IOException {
 		Item selection = table.getSelectionModel().getSelectedItem();
 		table.getItems().remove(selection);
@@ -187,6 +208,12 @@ public class TechnologyInventorySystemController implements Initializable {
 
 	}
 
+	/**
+	 * Returns user to main main after button is clicked
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	public void returnToMenu(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -195,10 +222,14 @@ public class TechnologyInventorySystemController implements Initializable {
 		stage.show();
 	}
 
+	/**
+	 * Initializes the controller class. This method is automatically called after
+	 * the FXML file has been loaded. initializes the columns of the table utilizing
+	 * properties initializes the choice boxes utilized ideas and code from
+	 * stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
-		// remember to javadoc everything
 
 		idColumn.setCellValueFactory(data -> data.getValue().idProperty().asObject());
 		nameColumn.setCellValueFactory(data -> data.getValue().nameProperty());
@@ -210,9 +241,7 @@ public class TechnologyInventorySystemController implements Initializable {
 		typeColumn.setCellValueFactory(data -> data.getValue().typeProperty());
 		sizeColumn.setCellValueFactory(data -> data.getValue().sizeTechProperty());
 		yearColumn.setCellValueFactory(data -> data.getValue().yearProperty().asObject());
-		
-		
-		//for Choice boxes
+
 		sizeBox.getItems().add("inch");
 		sizeBox.getItems().add("cm");
 		typeField.getItems().add("TV");

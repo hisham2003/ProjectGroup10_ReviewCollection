@@ -16,7 +16,12 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-
+/**
+ * The controller for the Main menu for inventory System 
+ * that allows user to choose type of inventory system
+ * @author HishamSO
+ *
+ */
 public class MainViewController {
 	private Stage stage;
 	private Scene scene;
@@ -28,7 +33,11 @@ public class MainViewController {
     @FXML
     private ImageView imageView;
 
-
+    /**
+     * Switches to the Clothes inventory Scene utilizing this button
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void switchToClothes(ActionEvent event) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("ClothesInventorySystemView.fxml"));
@@ -37,6 +46,11 @@ public class MainViewController {
 		stage.setScene(scene);
 		stage.show();
     }
+    /**
+     * Switches to the Technology inventory Scene utilizing this button
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void switchToTech(ActionEvent event) throws IOException {
     	Parent root2 = FXMLLoader.load(getClass().getResource("TechnologyInventoryView.fxml"));

@@ -23,10 +23,25 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ * The controller for the clothes inventory System that handles most of the
+ * Initializations of the properties of the scene and handles errors as well
+ * 
+ * @author HishamSO
+ *
+ */
 public class ClothesInventorySystemController implements Initializable {
 	private Stage stage;
 	private Scene scene;
 	private Parent root;
+	private int idFieldNum;
+	private double costFieldNum;
+	private double saleFieldNum;
+	private int amountFieldNum;
+	private double totalCostFieldNum;
+	private int totalSaleAmountFieldNum;
+	private static final DecimalFormat df = new DecimalFormat("0.00");
+
 	@FXML
 	private TextField idField;
 
@@ -98,28 +113,29 @@ public class ClothesInventorySystemController implements Initializable {
 	@FXML
 	private Button escapeButton;
 
-	private static final DecimalFormat df = new DecimalFormat("0.00");
-
-	int idFieldnum;
-	double costFieldnum;
-	double saleFieldnum;
-	int amountFieldnum;
-	double totalCostFieldnum;
-	int totalSaleAmountFieldnum;
-
+	/**
+	 * Handles the "Add" button event and adds a new item to the table. has a
+	 * numberFormatException to prevent letters or characters
+	 * 
+	 * @param event
+	 * @throws IOException 
+	 */
 	@FXML
 	public void swicthToAdd(ActionEvent event) throws IOException {
 
 		try {
-			idFieldnum = Integer.parseInt(idField.getText());
-			costFieldnum = Double.parseDouble(costField.getText());
-			saleFieldnum = Double.parseDouble(saleField.getText());
-			amountFieldnum = Integer.parseInt(amountField.getText());
-			totalCostFieldnum = amountFieldnum * costFieldnum;
-			totalSaleAmountFieldnum = (int) (amountFieldnum * saleFieldnum);
-			Clothes input = new Clothes(idFieldnum, nameField.getText(), costFieldnum, saleFieldnum, amountFieldnum,
-					totalCostFieldnum, totalSaleAmountFieldnum, sizeField.getSelectionModel().getSelectedItem(), materialField.getSelectionModel().getSelectedItem());
+			idFieldNum = Integer.parseInt(idField.getText());
+			costFieldNum = Double.parseDouble(costField.getText());
+			saleFieldNum = Double.parseDouble(saleField.getText());
+			amountFieldNum = Integer.parseInt(amountField.getText());
+			totalCostFieldNum = amountFieldNum * costFieldNum;
+			totalSaleAmountFieldNum = (int) (amountFieldNum * saleFieldNum);
+
+			Clothes input = new Clothes(idFieldNum, nameField.getText(), costFieldNum, saleFieldNum, amountFieldNum,
+					totalCostFieldNum, totalSaleAmountFieldNum, sizeField.getSelectionModel().getSelectedItem(),
+					materialField.getSelectionModel().getSelectedItem());
 			table.getItems().add(input);
+
 		} catch (NumberFormatException e) {
 			errorLabel.setText("Only use numerical values for id,cost,sale,amount");
 		}
@@ -135,7 +151,7 @@ public class ClothesInventorySystemController implements Initializable {
 			totalAmount = totalAmount + item.getAmount();
 			totalHold = totalHold + item.getHoldingCostClothes();
 		}
-		
+
 		String formattedCost = df.format(totalCost);
 		String formattedSale = df.format(totalSale);
 		String formattedHold = df.format(totalHold);
@@ -147,7 +163,12 @@ public class ClothesInventorySystemController implements Initializable {
 
 	}
 
-	// https://stackoverflow.com/questions/34857007/how-to-delete-row-from-table-column-javafx
+	/**
+	 * Handles the "Remove" button event and removes an item from the table.
+	 * 
+	 * @param event 
+	 * @throws IOException 
+	 */
 	public void removeInventory(ActionEvent event) throws IOException {
 		Item selection = table.getSelectionModel().getSelectedItem();
 		table.getItems().remove(selection);
@@ -175,6 +196,12 @@ public class ClothesInventorySystemController implements Initializable {
 
 	}
 
+	/**
+	 * Returns user to main main after button is clicked
+	 * 
+	 * @param event
+	 * @throws IOException
+	 */
 	public void returnToMenu(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("MainView.fxml"));
 		stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -183,10 +210,14 @@ public class ClothesInventorySystemController implements Initializable {
 		stage.show();
 	}
 
+	/**
+	 * Initializes the controller class. This method is automatically called after
+	 * the FXML file has been loaded. initializes the columns of the table utilizing
+	 * properties initializes the choice boxes utilized ideas and code from
+	 * stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// stackoverflow.com/questions/72437983/why-should-i-avoid-using-propertyvaluefactory-in-javafx
-		// remember to javadoc everything
 
 		idColumn.setCellValueFactory(data -> data.getValue().idProperty().asObject());
 		nameColumn.setCellValueFactory(data -> data.getValue().nameProperty());
@@ -197,8 +228,7 @@ public class ClothesInventorySystemController implements Initializable {
 		totalSalePriceColumn.setCellValueFactory(data -> data.getValue().totalSalePriceProperty().asObject());
 		materialColumn.setCellValueFactory(data -> data.getValue().materialProperty());
 		sizeColumn.setCellValueFactory(data -> data.getValue().sizeProperty());
-		
-		
+
 		materialField.getItems().add("Cotton");
 		materialField.getItems().add("Fabric");
 		materialField.getItems().add("Polyester");
