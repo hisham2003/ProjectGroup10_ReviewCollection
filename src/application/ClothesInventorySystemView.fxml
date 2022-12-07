@@ -90,8 +90,8 @@
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
                   <TextField fx:id="amountField" />
-                  <TextField fx:id="sizeField" />
-                  <TextField fx:id="materialField" />
+                  <ChoiceBox fx:id="sizeField" prefWidth="150.0" />
+                  <ChoiceBox fx:id="materialField" prefWidth="150.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">

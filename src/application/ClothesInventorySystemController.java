@@ -46,10 +46,10 @@ public class ClothesInventorySystemController implements Initializable {
 	private TextField amountField;
 
 	@FXML
-	private TextField sizeField;
+	private ChoiceBox<String> sizeField;
 
 	@FXML
-	private TextField materialField;
+	private ChoiceBox<String> materialField;
 
 	@FXML
 	private Button addInventory;
@@ -102,7 +102,7 @@ public class ClothesInventorySystemController implements Initializable {
 
 	int idFieldnum;
 	double costFieldnum;
-	int saleFieldnum;
+	double saleFieldnum;
 	int amountFieldnum;
 	double totalCostFieldnum;
 	int totalSaleAmountFieldnum;
@@ -113,12 +113,12 @@ public class ClothesInventorySystemController implements Initializable {
 		try {
 			idFieldnum = Integer.parseInt(idField.getText());
 			costFieldnum = Double.parseDouble(costField.getText());
-			saleFieldnum = Integer.parseInt(saleField.getText());
+			saleFieldnum = Double.parseDouble(saleField.getText());
 			amountFieldnum = Integer.parseInt(amountField.getText());
 			totalCostFieldnum = amountFieldnum * costFieldnum;
-			totalSaleAmountFieldnum = amountFieldnum * saleFieldnum;
+			totalSaleAmountFieldnum = (int) (amountFieldnum * saleFieldnum);
 			Clothes input = new Clothes(idFieldnum, nameField.getText(), costFieldnum, saleFieldnum, amountFieldnum,
-					totalCostFieldnum, totalSaleAmountFieldnum, sizeField.getText(), materialField.getText());
+					totalCostFieldnum, totalSaleAmountFieldnum, sizeField.getSelectionModel().getSelectedItem(), materialField.getSelectionModel().getSelectedItem());
 			table.getItems().add(input);
 		} catch (NumberFormatException e) {
 			errorLabel.setText("Only use numerical values for id,cost,sale,amount");
@@ -137,7 +137,7 @@ public class ClothesInventorySystemController implements Initializable {
 		}
 		
 		String formattedCost = df.format(totalCost);
-		String formattedSale = df.format(totalHold);
+		String formattedSale = df.format(totalSale);
 		String formattedHold = df.format(totalHold);
 
 		totalCostLabel.setText(formattedCost);
@@ -165,7 +165,7 @@ public class ClothesInventorySystemController implements Initializable {
 		}
 
 		String formattedCost = df.format(totalCost);
-		String formattedSale = df.format(totalHold);
+		String formattedSale = df.format(totalSale);
 		String formattedHold = df.format(totalHold);
 
 		totalCostLabel.setText(formattedCost);
@@ -197,6 +197,15 @@ public class ClothesInventorySystemController implements Initializable {
 		totalSalePriceColumn.setCellValueFactory(data -> data.getValue().totalSalePriceProperty().asObject());
 		materialColumn.setCellValueFactory(data -> data.getValue().materialProperty());
 		sizeColumn.setCellValueFactory(data -> data.getValue().sizeProperty());
+		
+		
+		materialField.getItems().add("Cotton");
+		materialField.getItems().add("Fabric");
+		materialField.getItems().add("Polyester");
+		sizeField.getItems().add("S");
+		sizeField.getItems().add("M");
+		sizeField.getItems().add("L");
+		sizeField.getItems().add("XL");
 
 	}
 

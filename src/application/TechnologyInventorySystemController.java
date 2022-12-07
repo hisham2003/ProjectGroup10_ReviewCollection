@@ -49,7 +49,9 @@ public class TechnologyInventorySystemController implements Initializable {
 	private TextField sizeField;
 
 	@FXML
-	private TextField typeField;
+	private ChoiceBox<String> typeField;
+	@FXML
+	private ChoiceBox<String> sizeBox;
 	@FXML
 	private TextField yearField;
 
@@ -103,28 +105,32 @@ public class TechnologyInventorySystemController implements Initializable {
 	private Button escapeButton;
 
 	private static final DecimalFormat df = new DecimalFormat("0.00");
-
+	
 	int idFieldNum;
 	double costFieldNum;
-	int saleFieldNum;
+	double saleFieldNum;
 	int amountFieldNum;
 	double totalCostFieldNum;
 	int totalSaleAmountFieldNum;
 	int yearFieldNum;
+	String sizeFieldNum;
 
 	@FXML
 	public void swicthToAdd(ActionEvent event) throws IOException {
 
 		try {
+			
 			idFieldNum = Integer.parseInt(idField.getText());
 			costFieldNum = Double.parseDouble(costField.getText());
-			saleFieldNum = Integer.parseInt(saleField.getText());
+			saleFieldNum = Double.parseDouble(saleField.getText());
 			amountFieldNum = Integer.parseInt(amountField.getText());
 			totalCostFieldNum = amountFieldNum * costFieldNum;
-			totalSaleAmountFieldNum = amountFieldNum * saleFieldNum;
+			totalSaleAmountFieldNum = (int) (amountFieldNum * saleFieldNum);
 			yearFieldNum=Integer.parseInt(yearField.getText());
+			sizeFieldNum=sizeField.getText() + " " +sizeBox.getSelectionModel().getSelectedItem();
+			
 			Technology input = new Technology(idFieldNum, nameField.getText(), costFieldNum, saleFieldNum, amountFieldNum,
-					totalCostFieldNum, totalSaleAmountFieldNum, sizeField.getText(), typeField.getText(),yearFieldNum);
+					totalCostFieldNum, totalSaleAmountFieldNum, sizeFieldNum, typeField.getSelectionModel().getSelectedItem(),yearFieldNum);
 			table.getItems().add(input);
 		} catch (NumberFormatException e) {
 			errorLabel.setText("Only use numerical values for id,cost,sale,amount");
@@ -143,7 +149,7 @@ public class TechnologyInventorySystemController implements Initializable {
 		}
 		
 		String formattedCost = df.format(totalCost);
-		String formattedSale = df.format(totalHold);
+		String formattedSale = df.format(totalSale);
 		String formattedHold = df.format(totalHold);
 
 		totalCostLabel.setText(formattedCost);
@@ -171,7 +177,7 @@ public class TechnologyInventorySystemController implements Initializable {
 		}
 
 		String formattedCost = df.format(totalCost);
-		String formattedSale = df.format(totalHold);
+		String formattedSale = df.format(totalSale);
 		String formattedHold = df.format(totalHold);
 
 		totalCostLabel.setText(formattedCost);
@@ -204,7 +210,14 @@ public class TechnologyInventorySystemController implements Initializable {
 		typeColumn.setCellValueFactory(data -> data.getValue().typeProperty());
 		sizeColumn.setCellValueFactory(data -> data.getValue().sizeTechProperty());
 		yearColumn.setCellValueFactory(data -> data.getValue().yearProperty().asObject());
-
+		
+		
+		//for Choice boxes
+		sizeBox.getItems().add("inch");
+		sizeBox.getItems().add("cm");
+		typeField.getItems().add("TV");
+		typeField.getItems().add("Smartphone");
+		typeField.getItems().add("Appliances");
 	}
 
 }
