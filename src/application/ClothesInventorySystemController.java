@@ -127,7 +127,7 @@ public class ClothesInventorySystemController implements Initializable {
 			costFieldNum = Double.parseDouble(costField.getText());
 			saleFieldNum = Double.parseDouble(saleField.getText());
 			amountFieldNum = Integer.parseInt(amountField.getText());
-			totalCostFieldNum = amountFieldNum * costFieldNum;
+			totalCostFieldNum = (int) (amountFieldNum * costFieldNum);
 			totalSaleAmountFieldNum = (int) (amountFieldNum * saleFieldNum);
 
 			Clothes input = new Clothes(idFieldNum, nameField.getText(), costFieldNum, saleFieldNum, amountFieldNum,

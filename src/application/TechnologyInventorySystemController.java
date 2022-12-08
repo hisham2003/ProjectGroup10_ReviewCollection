@@ -138,10 +138,11 @@ public class TechnologyInventorySystemController implements Initializable {
 			costFieldNum = Double.parseDouble(costField.getText());
 			saleFieldNum = Double.parseDouble(saleField.getText());
 			amountFieldNum = Integer.parseInt(amountField.getText());
-			totalCostFieldNum = amountFieldNum * costFieldNum;
+			totalCostFieldNum = (int) (amountFieldNum * costFieldNum);
 			totalSaleAmountFieldNum = (int) (amountFieldNum * saleFieldNum);
 			yearFieldNum = Integer.parseInt(yearField.getText());
 			sizeFieldNum = sizeField.getText() + " " + sizeBox.getSelectionModel().getSelectedItem();
+			
 
 			Technology input = new Technology(idFieldNum, nameField.getText(), costFieldNum, saleFieldNum,
 					amountFieldNum, totalCostFieldNum, totalSaleAmountFieldNum, sizeFieldNum,
@@ -243,7 +244,7 @@ public class TechnologyInventorySystemController implements Initializable {
 
 		sizeBox.getItems().add("inch");
 		sizeBox.getItems().add("cm");
-		typeField.getItems().add("TV");
+		typeField.getItems().add("TV and Laptops");
 		typeField.getItems().add("Smartphone");
 		typeField.getItems().add("Appliances");
 	}
